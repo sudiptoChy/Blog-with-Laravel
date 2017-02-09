@@ -9,6 +9,7 @@
 
       <div class="container">
 
+        @include('_messages')
         @yield('content')
 
         @include('_footer')
