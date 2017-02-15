@@ -16,45 +16,25 @@
 
 <div class="row">
   <div class="col-md-8">
+
+    @foreach ($posts as $post)
+
     <div class="post">
-      <h3> Post Title </h3>
+      <h3>{{ $post->title }}</h3>
       <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+          {{ substr($post->body, 0, 100) }} {{ strlen($post->body) > 100 ? "..." : "" }}
+          <br> <br>
           <a href="#" class="btn btn-primary"> Read more </a>
       </p>
     </div>
 
     <hr>
 
-    <div class="post">
-      <h3> Post Title </h3>
-      <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
-          <a href="#" class="btn btn-primary"> Read more </a>
-      </p>
+    @endforeach
+
+    <div class="text-center">
+      {{ $posts->links() }}
     </div>
-
-    <hr>
-
-    <div class="post">
-      <h3> Post Title </h3>
-      <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
-          <a href="#" class="btn btn-primary"> Read more </a>
-      </p>
-    </div>
-
-    <hr>
-
-    <div class="post">
-      <h3> Post Title </h3>
-      <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
-          <a href="#" class="btn btn-primary"> Read more </a>
-      </p>
-    </div>
-
-    <hr>
 
   </div>
 

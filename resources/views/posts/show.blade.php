@@ -36,6 +36,13 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-sm-12">
+            <br>
+            <a href="{{ route('posts.index') }}" class="btn btn-default btn-block"> << See all Posts</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
