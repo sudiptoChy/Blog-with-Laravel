@@ -28,7 +28,11 @@
           </div>
 
           <div class="col-sm-6">
-            <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger btn-block">Delete</a>
+              <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
+                  <input type="submit" value="Delete" class="btn btn-danger btn-block">
+                  <input type="hidden" name="_token" value="{{ Session::token() }}">
+                  {{ method_field('DELETE') }}
+              </form>
           </div>
         </div>
 

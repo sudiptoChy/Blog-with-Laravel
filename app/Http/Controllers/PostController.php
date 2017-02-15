@@ -103,8 +103,6 @@ class PostController extends Controller
             ));
 
           // Store in the database
-
-          echo "Magir Pola";
         //  <hr>
 
           $post = Post::find($id);
@@ -130,7 +128,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $post->delete();
 
+        Session::flash('success', 'Post Deleted Successfully');
+
+        return redirect()->route('posts.index');
 
     }
 }
