@@ -6,15 +6,15 @@ It is a simple blog build on top of the Laravel framework. It's only for my lear
 ## Downloading Instructions
 
 1. git clone https://github.com/sudiptoChy/Blog-with-Laravel.git project name
-2. Composer install
+2. composer install
 3. php artisan migrate --seed
 4. php artisan serve
 
-Enjoy!
+  Enjoy!
 
 ##Contact Author
 
-E-mail: dip.chy93@gmail.com
+E-mail:  dip.chy93@gmail.com
 
 ## License
 
