@@ -13,6 +13,12 @@
               <label name="title">Title:</label>
               <input id="title" name="title" class="form-control" required>
             </div>
+
+            <div class="form-group">
+              <label name="title">Slug:</label>
+              <input id="slug" name="slug" class="form-control" required>
+            </div>
+
             <div class="form-group">
               <label name="body">Post Body:</label>
               <textarea id="body" name="body" rows="10" class="form-control" required autofocus=""></textarea>
