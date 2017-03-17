@@ -24,7 +24,7 @@
       <p>
           {{ substr($post->body, 0, 100) }} {{ strlen($post->body) > 100 ? "..." : "" }}
           <br> <br>
-          <a href="#" class="btn btn-primary"> Read more </a>
+          <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary"> Read more </a>
       </p>
     </div>
 
