@@ -12,7 +12,7 @@ It is a simple blog build on top of the Laravel framework. It's only for my lear
 
   Enjoy!
 
-##Contact Author
+## Contact Author
 
 E-mail:  dip.chy93@gmail.com
 
