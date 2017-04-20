@@ -83,7 +83,6 @@ class PostController extends Controller
     public function edit($id)
     {
         //
-
         $post = Post::find($id);
         return view('posts.edit')->withPost($post);
     }
@@ -99,16 +98,22 @@ class PostController extends Controller
     {
       // Validating the request
 
-            $this->validate($request, array(
-              'title' => 'required|max:255',
-              'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-              'body'  => 'required'
-            ));
+            $post = Post::find($id);
 
-          // Store in the database
-        //  <hr>
-
-          $post = Post::find($id);
+            if($request->input('slug') == $post->slug)
+            {
+                $this->validate($request, array(
+                  'title' => 'required|max:255',
+                  'body'  => 'required'
+                ));
+            } else {
+                $this->validate($request, array(
+                  'title' => 'required|max:255',
+                  'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                  'body'  => 'required'
+                ));
+            }
+          
 
           $post->title = $request->input('title');
           $post->slug = $request->input('slug');

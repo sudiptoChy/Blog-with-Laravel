@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
           <label name="title">Slug:</label>
-          <input id="title" name="title" class="form-control" value="{{ $post->slug }}">
+          <input id="title" name="slug" class="form-control" value="{{ $post->slug }}">
         </div>
         <div class="form-group">
           <label name="body">Post Body:</label>
