@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', 'pagesController@getIndex');
-Route::get('/about', 'pagesController@getAbout');
-Route::get('/contact', 'pagesController@getContact');
+Auth::routes();
+Route::get('/', 'pagesController@getLogin');
 
-Route::resource('posts', 'PostController');
-Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
-Route::get('blog', ['uses' => 'BlogController@ ', 'as' => 'blog.index']);
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/home', 'pagesController@getIndex');
+	Route::get('/about', 'pagesController@getAbout');
+	Route::get('/contact', 'pagesController@getContact');
+
+	Route::resource('posts', 'PostController');
+	Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
+	Route::get('/blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
+});
+
+
