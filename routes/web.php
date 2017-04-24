@@ -12,7 +12,7 @@
 */
 
 Auth::routes();
-Route::get('/', 'pagesController@getLogin');
+Route::get('/', ['uses' => 'pagesController@getIndex', 'as' => 'guest_home']);
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'pagesController@getIndex');
@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/contact', 'pagesController@getContact');
 
 	Route::resource('posts', 'PostController');
+	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+	
 	Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 	Route::get('/blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 });

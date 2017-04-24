@@ -14,6 +14,18 @@
           <label name="title">Slug:</label>
           <input id="title" name="slug" class="form-control" value="{{ $post->slug }}">
         </div>
+
+        <div class="form-group">
+              <label name="title">Category:</label>
+               <select class="form-control" name="category_id" required="true">
+                    <option value="{{ $post->category_id }}">{{$post->category->name}}</option>
+                        @foreach($categories as $category)
+                          <option name="category_id" value="{{ $category->id }}">{{ $category->name }}
+                          </option>
+                        @endforeach
+                </select>
+          </div>
+
         <div class="form-group">
           <label name="body">Post Body:</label>
           <textarea id="body" name="body" rows="10" class="form-control">{{ $post->body }}</textarea>

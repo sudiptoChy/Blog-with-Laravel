@@ -20,6 +20,17 @@
             </div>
 
             <div class="form-group">
+              <label name="title">Category:</label>
+               <select class="form-control" name="category_id" required="true">
+                    <option disabled selected value> Select a Category</option>
+                        @foreach($categories as $category)
+                          <option name="category_id" value="{{ $category->id }}">{{ $category->name }}
+                          </option>
+                        @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
               <label name="body">Post Body:</label>
               <textarea id="body" name="body" rows="10" class="form-control" required autofocus=""></textarea>
             </div>
