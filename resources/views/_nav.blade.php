@@ -27,7 +27,8 @@
         <ul class="dropdown-menu">
           <li><a href="/posts">Posts</a></li>
           <li><a href="{{ route('categories.index') }}">Categories </a></li>
-          <li><a id="logout" href="">Log out</a></li>
+          <li><a href="{{ route('tags.index') }}">Tags</a></li>
+          <li><a href="{{ route('logout') }}">Log out</a></li>
         </ul>
       </li>
       @else
@@ -37,18 +38,3 @@
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </nav>
-
-  <form id="frmlogout" method="POST" action="/logout">
-    {!! csrf_field() !!}
-  </form>
-
-  @push('scripts')
-    <script>
-      document
-      .getElementById('logout')
-      .addEventListener('click', function(e){
-        e.preventDefault();
-        document.getElementById('frmlogout').submit();
-      });
-    </script>
-  @endpush

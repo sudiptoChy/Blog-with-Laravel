@@ -17,6 +17,8 @@
       </div>
 
     @include('_javascripts')
+    @yield('scripts')
+
   </body>
 
 </html>

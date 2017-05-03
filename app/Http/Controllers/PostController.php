@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Session;
 
 class PostController extends Controller
@@ -28,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create')->with('categories', $categories);
+        $tags = Tag::all();
+        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -59,6 +61,8 @@ class PostController extends Controller
 
       $post->save();
 
+      $post->tags()->sync($request->tags, false);
+
       Session:: flash('success', 'Post Created Successfully!');
 
       // Redirect to another page
@@ -86,10 +90,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
         $post = Post::find($id);
         $categories = Category::all();
-        return view('posts.edit')->withPost($post)->with('categories', $categories);
+        $tags = Tag::all();
+        
+        return view('posts.edit')
+                ->withPost($post)
+                ->with('categories', $categories)
+                ->with('tags', $tags);
     }
 
     /**
@@ -128,6 +136,12 @@ class PostController extends Controller
           $post->body = $request->input('body');
 
           $post->save();
+
+          if (isset($request->tags)) {
+            $post->tags()->sync($request->tags);
+          } else {
+            $post->tags()->sync(array());
+          }
 
           Session::flash('success', 'Post Updated Successfully!');
 

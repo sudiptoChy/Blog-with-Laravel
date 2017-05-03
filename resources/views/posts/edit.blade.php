@@ -2,6 +2,10 @@
 
 @section('title' , '| Edit Blog Post')
 
+@section('stylesheet')
+  <link rel="stylesheet" href="{{asset('css/select2.min.css')}}">
+@endsection
+
 @section('content')
   <div class="row">
     <div class="col-md-8">
@@ -25,6 +29,16 @@
                         @endforeach
                 </select>
           </div>
+
+          <div class="form-group">
+              <label name="title">Tags:</label>
+               <select class="form-control select2-multi" multiple="multiple" name="tags[]" required="true">
+                        @foreach($tags as $tag)
+                          <option name="tag_id" value="{{ $tag->id }}"> {{ $tag->name }}
+                          </option>
+                        @endforeach
+                </select>
+            </div>
 
         <div class="form-group">
           <label name="body">Post Body:</label>
@@ -62,7 +76,13 @@
       </div>
     </div>
   </div>
+@endsection
 
+@section('scripts')
+  <script src="{{ asset('js/select2.min.js') }}"></script>
 
-
+  <script type="text/javascript">
+    $('.select2-multi').select2();
+    $('.select2-multi').val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+  </script>
 @endsection
