@@ -13,4 +13,38 @@
 		</div>	
 	</div>
 
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			@foreach($post->comments as $comment)
+				<div class="comment">
+					<p><strong>Name:</strong> {{ $comment->name }}</p>
+					<p><strong>Comment:</strong> <br/>{{ $comment->comment }}</p> <br/>
+				</div>
+			@endforeach
+		</div>
+	</div>
+
+	<div class="row">
+		<div id="comment-form" class="col-md-8 col-md-offset-2">
+			<form method="post" action="{{ route('comments.store', $post->id) }}">
+				<div class="col-md-6">
+					<label">Name:</label>
+					<input type="text" name="name" class="form-control">
+				</div>
+
+				<div class="col-md-6">
+					<label">Email:</label>
+					<input type="text" name="email" class="form-control">
+				</div>
+
+				<div class="col-md-12">
+					<label">Comment:</label>
+					<textarea class="form-control" name="comment"></textarea>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<button class="btn btn-success form-control" style="margin-top: 10px;">Add Comment</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
 @endsection

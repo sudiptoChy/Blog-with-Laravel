@@ -8,8 +8,15 @@
 		<div class="col-md-8">
 			<h1>{{ $tag->name }} Tag <small>{{ $tag->posts->count() }} posts </small></h1>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-2">
 			<a href="{{ route('tags.edit', $tag->id )}}" class="btn btn-primary pull-right" style="margin-top: 20px;"> Edit </a>
+		</div>
+		<div class="col-md-2">
+			<form action="{{ route('tags.destroy', $tag->id) }}" method="POST">
+				<input type="hidden" name="_token" value="{{ Session::token() }}">
+				<button class="btn btn-danger" style="margin-top: 20px;"> Delete </button>
+				{{ method_field('DELETE') }}
+			</form>
 		</div>
 	</div>
 
